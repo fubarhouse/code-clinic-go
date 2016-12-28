@@ -21,6 +21,7 @@ import (
 	"strconv"
 	"strings"
 	"structs" // https://github.com/fatih/structs
+	"sort"
 )
 
 // DataSet struct to house all data
@@ -85,13 +86,18 @@ func getFieldFloat(i int, s string, data []DataSet) (float64) {
 
 // Returns the median of multiple data sets based upon input data
 func median(value string, data []DataSet) (float64) {
-	var returnValue = getFieldFloat(len(data) / 2, value, data)
+	var numberList[]float64
+	for item := range data {
+		var currentNumber = getFieldFloat(item,value,data)
+		numberList = append(numberList, currentNumber)
+	}
+	sort.Float64s(numberList)
+	var returnValue = numberList[len(numberList) / 2]
 	return returnValue
 }
 
 // Returns the mean of multiple data sets based upon input data
 func mean(value string, data []DataSet) (float64) {
-	// The mean is found by adding up all of the given data and dividing by the number of data entries
 	var currentTotal float64 = 0.00;
 	for i := 0; i < len(data); i++  {
 		currentTotal += getFieldFloat(i, value, data)
@@ -102,7 +108,7 @@ func mean(value string, data []DataSet) (float64) {
 // Our main function
 func main() {
 	// Specify file, Generate data
-	var filename = "./data.txt"
+	var filename = "./Exercise Files/problems/Problem01/data.txt"
 	var data = loadData(1, filename)
 
 	// Process and store required data
