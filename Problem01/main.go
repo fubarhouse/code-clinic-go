@@ -11,6 +11,8 @@
 // * Error handling function which is called when the requested file isn't found
 // * Function dedicated to finding the mean of dataset with the usage of (string) keys.
 // * Function dedicated to finding the median of dataset with the usage of (string) keys.
+// * (Added later) Prevent false readings from Median function by sorting returned values prior to return.
+// * (Added later) API function to create and return a DataSet object, which allows scalable and programmable adding of items into the data.
 
 package main
 
@@ -44,6 +46,11 @@ func errorHandler(err error) {
 	}
 }
 
+// This function returns a single newly created DataSet struct object.
+func makeDataObject(data []string) DataSet {
+	return DataSet{ data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8]}
+}
+
 // The main data function which generates structured data from the inputted file path
 func loadData(offset int, filename string) (slice []DataSet) {
 	var file, err = os.Open(filename)
@@ -55,7 +62,7 @@ func loadData(offset int, filename string) (slice []DataSet) {
 	for scanner.Scan() {
 		if count > offset {
 			var result = strings.Fields(scanner.Text())
-			results = append(results, DataSet{ result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7], result[8]})
+			results = append(results, makeDataObject(result))
 		}
 		count += 1
 	}

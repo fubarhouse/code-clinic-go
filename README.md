@@ -16,3 +16,5 @@ I've attempted to make the data searchable by index and field name, as a result 
 * Error handling function which is called when the requested file isn't found
 * Function dedicated to finding the mean of dataset with the usage of (string) keys.
 * Function dedicated to finding the median of dataset with the usage of (string) keys.
+* (Added later) Prevent false readings from Median function by sorting returned values prior to return.
+* (Added later) API function to create and return a DataSet object, which allows scalable and programmable adding of items into the data. 
