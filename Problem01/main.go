@@ -115,24 +115,16 @@ func mean(value string, data []DataSet) (float64) {
 // Our main function
 func main() {
 	// Specify file, Generate data
-	var filename = "./Exercise Files/problems/Problem01/data.txt"
-	var data = loadData(1, filename)
+	var filename= "./Exercise Files/problems/Problem01/data.txt"
+	var data= loadData(1, filename)
 
-	// Process and store required data
-	var aTMd = median("Air_Temp", data)
-	var aTMn = mean("Air_Temp", data)
-	var wSMd = median("Wind_Speed", data)
-	var wSMn = mean("Wind_Speed", data)
-	var bPMd = median("Barometric_Press", data)
-	var bPMn = mean("Barometric_Press", data)
+	// Process required data and output problem requirements
 
-	// Print the data above required to complete code clinic task #1
-	fmt.Printf("Median of %v is %.2f\n", "Air_Temp", aTMd)
-	fmt.Printf("Mean of %v is %.2f\n", "Air_Temp", aTMn)
+	fmt.Printf("Median of %v is %.2f\n", median("Air_Temp", data))
+	fmt.Printf("Median of %v is %.2f\n", median("Wind_Speed", data))
+	fmt.Printf("Median of %v is %.2f\n", median("Barometric_Press", data))
 
-	fmt.Printf("Median of %v is %.2f\n", "Wind_Speed", wSMd)
-	fmt.Printf("Mean of %v is %.2f\n", "Wind_Speed", wSMn)
-
-	fmt.Printf("Median of %v is %.2f\n", "Barometric_Press", bPMd)
-	fmt.Printf("Mean of %v is %.2f\n", "Barometric_Press", bPMn)
+	fmt.Printf("Mean of %v is %.2f\n", mean("Air_Temp", data))
+	fmt.Printf("Mean of %v is %.2f\n", mean("Wind_Speed", data))
+	fmt.Printf("Mean of %v is %.2f\n", mean("Barometric_Press", data))
 }
